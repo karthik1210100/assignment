@@ -1,0 +1,35 @@
+<h1>Add Member to Organization</h1>
+
+<%= form_with(model: @membership, local: true) do |form| %>
+  <% if @membership.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@membership.errors.count, "error") %> prevented this membership from being saved:</h2>
+      <ul>
+        <% @membership.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :user_id, "User" %><br>
+    <%= form.collection_select :user_id, User.all, :id, :email, prompt: "Select a user" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :organization_id, "Organization" %><br>
+    <%= form.collection_select :organization_id, Organization.all, :id, :name, prompt: "Select an organization" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :role %><br>
+    <%= form.select :role, Membership.roles.keys.map { |r| [r.capitalize, r] }, prompt: "Select role" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Add Member" %>
+  </div>
+<% end %>
+
+<%= link_to "Back to Memberships", memberships_path %>

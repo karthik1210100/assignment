@@ -1,0 +1,20 @@
+<h1>Your Memberships</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Organization</th>
+    <th>Role</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @memberships.each do |membership| %>
+    <tr>
+      <td><%= link_to membership.organization.name, organization_path(membership.organization) %></td>
+      <td><%= membership.role.capitalize %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= link_to "Add Member to Organization", new_membership_path %>
