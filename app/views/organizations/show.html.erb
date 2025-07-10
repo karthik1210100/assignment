@@ -1,0 +1,16 @@
+<h1>Organization: <%= @organization.name %></h1>
+
+<p>
+  <strong>Members:</strong>
+<ul>
+  <% @organization.users.each do |user| %>
+    <li>
+      <%= user.email %> — Role:
+      <%= @organization.memberships.find_by(user: user).role %>
+    </li>
+  <% end %>
+</ul>
+</p>
+
+<%= link_to 'Edit Organization', edit_organization_path(@organization) if current_user.admin_of?(@organization) %> |
+<%= link_to 'Back to Organizations', organizations_path %>

@@ -1,0 +1,10 @@
+<h1>Analytics for <%= @organization.name %></h1>
+
+<p>Total Members: <%= @member_count %></p>
+
+<h2>Age Distribution:</h2>
+<ul>
+  <% @age_distribution.each do |age, count| %>
+    <li>Age <%= age %>: <%= count %> user(s)</li>
+  <% end %>
+</ul>
