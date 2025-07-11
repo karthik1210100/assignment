@@ -1,3 +1,5 @@
+<%= link_to 'Sign Out', destroy_user_session_path, method: :delete, data: { confirm: 'Are you sure you want to sign out?' }, class: "btn btn-danger mb-3" %>
+
 <h1>Your Organizations</h1>
 
 <%= link_to 'Create New Organization', new_organization_path %>
